@@ -1,11 +1,17 @@
 import React from "react";
 
-const SideBar = () => {
+const SideBar = ({ setChatLog }) => {
+  const clearChat = () => {
+    setChatLog([]);
+  };
+
   return (
-    <div className="side-menu-button">
-      <span>+</span>
-      New Chat
-    </div>
+    <aside className="sidemenu">
+      <div className="side-menu-button" onClick={clearChat}>
+        <span>+</span>
+        New Chat
+      </div>
+    </aside>
   );
 };
 

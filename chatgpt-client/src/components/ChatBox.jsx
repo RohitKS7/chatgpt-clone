@@ -1,29 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import ChatMessage from "./ChatMessage";
 
-const ChatBox = () => {
-  const { isAi, setIsAi } = useState(false);
-  const { input, setInput } = useState("");
-  const { chatLog, setChatLog } = useState([]);
+export default function ChatBox({ chatLog, setChatLog }) {
+  const [input, setInput] = useState("");
+
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatLog]);
 
   const handleSubmit = async (e) => {
-    e.preventDeafult();
+    e.preventDefault();
 
-    setChatLog([...chatLog, { user: "me", message: `${input}` }]);
+    const newChatLogData = [...chatLog, { user: "human", message: `${input}` }];
+
     setInput("");
+
+    setChatLog(newChatLogData);
+
+    // fetch response to the api combining the chat log array of messages and sending it as a message to react localhost as a post
+    const messages = newChatLogData
+      .map((message) => message.message)
+      .join("\n");
+    const response = await fetch("http://localhost:3080/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: messages,
+      }),
+    });
+
+    const data = await response.json();
+    setChatLog([
+      ...newChatLogData,
+      { user: "gpt", message: `${data.message}` },
+    ]);
+    // console.log(data.message);
   };
 
   return (
     <>
       <div className="chat-log">
-        <ChatMessage isAi={isAi} setIsAi={setIsAi} message="Hello" />
+        {chatLog.map((item, i) => (
+          <ChatMessage key={i} {...item} />
+        ))}
+        <div ref={messagesEndRef} />
       </div>
       <div className="chat-input-holder">
         <form onSubmit={handleSubmit}>
           <input
             value={input}
-            onChange={() => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
             className="chat-input-textarea"
             placeholder="Ask Helpai Anthing..."
           ></input>
@@ -31,6 +66,4 @@ const ChatBox = () => {
       </div>
     </>
   );
-};
-
-export default ChatBox;
+}

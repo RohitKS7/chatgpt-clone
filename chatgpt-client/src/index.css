@@ -24,6 +24,7 @@
 }
 
 .sidemenu {
+  height: 100vh;
   background-color: #202123;
   padding: 10px;
   width: 260px;
@@ -50,10 +51,21 @@
   flex: 1;
   background-color: #343541;
   position: relative;
+  padding-bottom: 20px;
+}
+
+/* hides scrollbar */
+.chat-log::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-log {
   padding: 24px;
+  overflow-y: auto;
+  height: 90vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 .chat-message {
@@ -62,6 +74,7 @@
   align-items: center;
   padding: 12px;
   border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .avatar {
@@ -69,6 +82,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  padding: 10px;
   width: 40px;
   height: 40px;
   margin-right: 20px;
@@ -79,6 +93,7 @@
 }
 
 .message {
+  white-space: pre-wrap;
 }
 
 .chat-input-holder {

@@ -18,20 +18,30 @@ app.use(cors());
 const port = 3080;
 
 app.post("/", async (req, res) => {
-  const { message } = req.body;
-  console.log(message, "message");
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `${message}`,
-    max_tokens: 50,
-    temperature: 0.5,
-    stop: "., \n, \n\n",
-  });
-  res.json({
-    message: response.data.choices[0].text,
-  });
+  try {
+    const { message } = req.body;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `${message}`,
+      // max number of words it will give results in
+      max_tokens: 50,
+      // how much creative answer it will give
+      temperature: 0.5,
+      top_p: 1,
+      //don't repeat similar results
+      frequency_penalty: 0.5,
+      // whenever stop sequence comes in the result, the completion will stop
+      stop: "., \n, \n\n",
+    });
+    res.status(200).json({
+      message: response.data.choices[0].text,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error });
+  }
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Server is running on port http://localhost:${port}`);
 });

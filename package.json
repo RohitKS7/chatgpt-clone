@@ -2,7 +2,6 @@
   "name": "chatgpt-server",
   "version": "1.0.0",
   "description": "server for chaptgpt",
-  "main": "index.js",
   "author": "Rohit ",
   "license": "MIT",
   "private": true,

@@ -15,6 +15,7 @@ export default function ChatBox({ chatLog, setChatLog }) {
     scrollToBottom();
   }, [chatLog]);
 
+  // HandleSubmit Function
   const handleSubmit = async (e) => {
     e.preventDefault();
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const SideBar = ({ setChatLog }) => {
+export default function SideBar({ setChatLog, models, setCurrentModel }) {
   const clearChat = () => {
     setChatLog([]);
   };
@@ -13,6 +13,4 @@ const SideBar = ({ setChatLog }) => {
       </div>
     </aside>
   );
-};
-
-export default SideBar;
+}

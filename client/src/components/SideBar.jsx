@@ -3,7 +3,7 @@ import React from "react";
 import github from "../assets/github.svg";
 import twitter from "../assets/twitter.svg";
 
-export function SideBar({ setChatLog }) {
+const SideBar = ({ setChatLog }) => {
   const clearChat = () => {
     setChatLog([]);
   };
@@ -65,4 +65,6 @@ export function SideBar({ setChatLog }) {
       </div>
     </aside>
   );
-}
+};
+
+export default SideBar;

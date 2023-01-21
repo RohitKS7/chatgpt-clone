@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 // import { SideBar, ChatBox } from "./components";
-import { SideBar } from "./components/SideBar";
-import { ChatBox } from "./components/ChatBox";
+import SideBar from "./components/SideBar";
+import ChatBox from "./components/ChatBox";
 import "./index.css";
 import "./normal.css";
 
-export function App() {
+const App = () => {
   const [chatLog, setChatLog] = useState([
     {
       user: "gpt",
@@ -22,4 +22,6 @@ export function App() {
       </div>
     </div>
   );
-}
+};
+
+export default App;

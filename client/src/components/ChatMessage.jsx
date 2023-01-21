@@ -4,7 +4,7 @@ import TypeWriterEffect from "react-typewriter-effect";
 import bot from "../assets/bot.svg";
 import human from "../assets/user.svg";
 
-export function ChatMessage({ message, user }) {
+const ChatMessage = ({ message, user }) => {
   return (
     <>
       <div
@@ -43,4 +43,6 @@ export function ChatMessage({ message, user }) {
       </div>
     </>
   );
-}
+};
+
+export default ChatMessage;

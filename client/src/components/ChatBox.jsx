@@ -29,7 +29,7 @@ export default function ChatBox({ chatLog, setChatLog }) {
     const messages = newChatLogData
       .map((message) => message.message)
       .join("\n");
-    const response = await fetch("http://localhost:3080/", {
+    const response = await fetch("https://helpai-chatgpt-clone.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,6 @@ export default function ChatBox({ chatLog, setChatLog }) {
       ...newChatLogData,
       { user: "gpt", message: `${data.message}` },
     ]);
-    // console.log(data.message);
   };
 
   return (

@@ -17,6 +17,12 @@ app.use(bodyParser.json());
 app.use(cors());
 const port = 3080;
 
+app.get("/", async (req, res) => {
+  res.status(200).send({
+    message: "Hello from CodeX!",
+  });
+});
+
 app.post("/", async (req, res) => {
   try {
     const { message } = req.body;

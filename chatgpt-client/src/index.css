@@ -27,7 +27,25 @@
   height: 100vh;
   background-color: #202123;
   padding: 10px;
-  width: 260px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.sidemenu::-webkit-scrollbar {
+  width: 15px;
+}
+
+.sidemenu::-webkit-scrollbar-track {
+  background-color: #202123;
+}
+
+.sidemenu::-webkit-scrollbar-thumb {
+  background-color: #202123;
+  border-radius: 20px;
+  border: 3px solid rgb(136 136 136);
 }
 
 .side-menu-button {
@@ -35,6 +53,7 @@
   border: 1px solid white;
   border-radius: 5px;
   text-align: left;
+  margin-bottom: 4rem;
   transition: ease 0.25 all;
 }
 
@@ -45,6 +64,34 @@
 .side-menu-button span {
   padding-right: 12px;
   padding-left: 6px;
+}
+
+.project-info {
+  text-align: left;
+  margin: 10px;
+  gap: 1rem;
+  display: grid;
+}
+
+.creator {
+  display: flex;
+  flex-direction: column;
+}
+
+.creator a {
+  color: white;
+  outline: none;
+  text-decoration: none;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.link-icon {
+  margin-right: 10px;
+  background: white;
+  padding: 2px;
+  border-radius: 10px;
 }
 
 .chatbox {
@@ -114,6 +161,7 @@
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 25%);
   border: none;
   outline: none;
+  border: 2px solid #757575;
 }
 
 @media screen and (min-width: 980px) {

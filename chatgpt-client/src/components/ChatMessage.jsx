@@ -2,14 +2,11 @@ import React from "react";
 import TypeWriterEffect from "react-typewriter-effect";
 
 import bot from "../assets/bot.svg";
-import send from "../assets/send.svg";
 import human from "../assets/user.svg";
 
 export default function ChatMessage({ message, user }) {
   return (
     <>
-      {user === "gpt"}
-
       <div
         className="chat-message"
         style={{ background: user === "gpt" ? "#49455a" : "#202123cc" }}
@@ -24,7 +21,7 @@ export default function ChatMessage({ message, user }) {
           />
         </div>
         <div className="message">
-          {user === "gpt" ? (
+          {user === "gpt" && (
             <TypeWriterEffect
               textStyle={{
                 fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
@@ -36,22 +33,6 @@ export default function ChatMessage({ message, user }) {
               startDelay={100}
               cursorColor="black"
               text={message}
-              typeSpeed={20}
-              eraseSpeed={100}
-              hideCursorAfterText="true"
-            />
-          ) : (
-            <TypeWriterEffect
-              textStyle={{
-                fontFamily: "Inter, Avenir, Helvetica, Arial, sans-serif",
-                fontSize: "16px",
-                fontWeight: "bold",
-                fontSynthesis: "none",
-              }}
-              startDelay={10}
-              cursorColor="transparent"
-              multiText={[".", ".", ".", "."]}
-              multiTextLoop="true"
               typeSpeed={20}
               eraseSpeed={100}
               hideCursorAfterText="true"

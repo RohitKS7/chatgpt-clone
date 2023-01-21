@@ -3,7 +3,7 @@ import React from "react";
 import github from "../assets/github.svg";
 import twitter from "../assets/twitter.svg";
 
-export default function SideBar({ setChatLog }) {
+export function SideBar({ setChatLog }) {
   const clearChat = () => {
     setChatLog([]);
   };

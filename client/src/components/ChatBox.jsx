@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import ChatMessage from "./ChatMessage";
+import { ChatMessage } from "./ChatMessage";
 
-export default function ChatBox({ chatLog, setChatLog }) {
+export function ChatBox({ chatLog, setChatLog }) {
   const [input, setInput] = useState("");
 
   const messagesEndRef = useRef(null);

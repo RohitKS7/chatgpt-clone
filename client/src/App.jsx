@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-import { SideBar, ChatBox } from "./components";
+// import { SideBar, ChatBox } from "./components";
+import { SideBar } from "./components/SideBar";
+import { ChatBox } from "./components/ChatBox";
 import "./index.css";
 import "./normal.css";
 
-export default function App() {
+export function App() {
   const [chatLog, setChatLog] = useState([
     {
       user: "gpt",
